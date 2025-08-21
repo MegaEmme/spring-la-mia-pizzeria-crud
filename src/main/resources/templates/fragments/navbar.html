@@ -4,7 +4,7 @@
 <body>
 
     <!-- main navbar  -->
-    <nav class="navbar navbar-expand-lg nabar-light bg-light mb-4 shadow" th:fragment="navbar(current)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-pizza-color mb-4 shadow" th:fragment="navbar(current)">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">PizzaMike</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,12 +14,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item" th:classappend="${current == 'home'} ? 'active'">
                         <a th:href="@{/}" class="nav-link">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" th:classappend="${current == 'pizzas'} ? 'active'">
                         <a class="nav-link" th:href="@{/pizzas}">
                             Pizze
                         </a>

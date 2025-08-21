@@ -21,9 +21,16 @@ public class PizzaController {
 
     // INDEX
     @GetMapping
-    public String index(Model model) {
+    public String index(@RequestParam(name = "searchTerm", required = false) String searchTerm, Model model) {
         // SELECT * FROM 'pizzas' ==> lista di oggetti di tipo pizza
-        List<Pizza> pizzas = repository.findAll();
+        List<Pizza> pizzas;
+
+        if (searchTerm != null && !searchTerm.isBlank()) {
+            pizzas = repository.findByNameContaining(searchTerm);
+        } else {
+            pizzas = repository.findAll();
+        }
+
         model.addAttribute("pizzas", pizzas);
         return "pizzas/index";
     }
@@ -37,11 +44,13 @@ public class PizzaController {
     }
 
     // QUERY CUSTOM TROVAPIZZADALNOME
-    @GetMapping("/searchByName")
-    public String searchByName(@RequestParam(name = "name") String name, Model model) {
+    // @GetMapping("/searchByName")
+    // public String searchByName(@RequestParam(name = "name") String name, Model
+    // model) {
 
-        List<Pizza> pizzas = repository.findByNameContaining(name);
-        model.addAttribute("pizzas", pizzas);
-        return "pizzas/index";
-    }
+    // List<Pizza> pizzas = repository.findByNameContaining(name);
+    // model.addAttribute("pizzas", pizzas);
+    // return "pizzas/index";
+    // }
+
 }

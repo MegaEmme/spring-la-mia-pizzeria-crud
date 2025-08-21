@@ -9,33 +9,46 @@
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('pizzas')}"></nav>
     <main class="container p-4">
-        <h1>Pizze</h1>
+        <h1 class="text-center">Le Pizze di Mike</h1>
         <hr />
         <section class="row">
             <div class="col-12">
-                <table class="table" th:if="${pizzas.size() > 0}">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Descrizione</th>
-                            <th>URL immagine</th>
-                            <th>Prezzo</th>
-                            <th>Dettaglio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-                            <td>[[*{name}]]</td>
-                            <td>[[*{description}]]</td>
-                            <td>[[*{imageUrl}]]</td>
-                            <td>[[*{price}]]</td>
-                            <td><a th:href="@{/pizzas/{id}(id=*{id})}" class="btn btn-info btn-sm">Dettaglio</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="p-4" th:if="${pizzas.size() > 0}">
+                    <table class="table border border-dark">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrizione</th>
+                                <th>URL immagine</th>
+                                <th>Prezzo</th>
+                                <th>Dettaglio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                                <td>[[*{name}]]</td>
+                                <td>[[*{description}]]</td>
+                                <td><a th:href="*{imageUrl}">[[*{imageUrl}]]</a></td>
+                                <td>[[*{price}]] €</td>
+                                <td><a th:href="@{/pizzas/{id}(id=*{id})}" class="btn btn-info btn-sm">Dettaglio</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p th:unless="${pizzas.size() > 0}" th:text="There are no pizzas available at the moment..." />
             </div>
         </section>
+        <hr />
+
+        <form id="pizza-form" method="get" th:action="@{/pizzas}" th:object="${pizza}"
+            class="d-flex align-items-center justify-content-center">
+            <h2 class="mb-3 me-3">Ricerca pizza: </h2>
+            <label for="search-term"></label>
+            <input type="text" id="search-term" name="searchTerm" class="me-3 rounded">
+            <button type="submit" class="btn btn-sm btn-success rounded">Cerca</button>
+        </form>
+        <hr />
     </main>
     <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
