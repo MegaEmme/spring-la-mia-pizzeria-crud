@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Pizza: [[${pizza.name}]]</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('pizza')}"></nav>
+    <main class="container p-4" th:object="${pizza}">
+        <h1 class="mb-3">Singole pizze</h1>
+        <hr />
+        <h2 class="mb-3">Pizza: [[*{name}]]</h2>
+        <h2 class="mb-3">Descrizione: [[*{description}]]</h2>
+        <h3 class="mb-3"><a th:href="*{imageUrl}">Immagine</a></h3>
+        <h3 class="mb-3">Prezzo: [[*{price}]] €</h3>
+    </main>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

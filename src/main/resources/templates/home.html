@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Home</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('home')}"></nav>
+    <div class="container p-4">
+        <h1 class="text-center fw-bold mb-4">Benvenuto da PizzaMike!</h1>
+
+        <hr />
+
+        <p class="text-center">
+            Benvenuto nella Pizzeria di Michelangelo!
+            Ciao a tutti, sono Michelangelo Musco, e sono entusiasta di darvi il benvenuto nella mia pizzeria digitale.
+
+            Questo spazio è stato creato come parte di un percorso di apprendimento e crescita nel mondo dello sviluppo
+            web, utilizzando le potenti tecnologie di Java e Spring Boot. Qui non troverete solo un elenco di pizze, ma
+            il frutto di uno studio appassionato e di un progetto sviluppato con cura e attenzione.
+
+            Ogni funzionalità che vedete è il risultato dell'applicazione di concetti di programmazione fondamentali:
+
+            La gestione del database con JPA e Hibernate.
+
+            La creazione di un'interfaccia intuitiva e dinamica con Thymeleaf.
+
+            Lo sviluppo di API e servizi per la gestione dei dati.
+
+            Il mio obiettivo è che questa pizzeria non sia solo un menu online, ma una dimostrazione pratica di come il
+            codice possa dare vita a un'applicazione robusta, efficiente e deliziosa. Spero che l'esplorazione di questo
+            sito vi metta l'acquolina in bocca tanto quanto lo è stato costruirlo per me.
+
+            Sentitevi liberi di esplorare il menu e di dare un'occhiata a quello che ho realizzato. Buon appetito!
+
+            Con i miei migliori saluti,
+            Michelangelo Musco
+            <hr />
+        </p>
+    </div>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>
