@@ -3,43 +3,64 @@
 
 <head>
     <div th:replace="~{fragments/resources :: headTags}"></div>
-    <title>Home</title>
+    <title>Pizze</title>
 </head>
 
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('home')}"></nav>
-    <div class="container p-4">
-        <h1 class="text-center fw-bold mb-4">Benvenuto da PizzaMike!</h1>
+    <main class="container p-4 bg-home rounded">
+        <div class="card p-4 shadow-lg card-overlay">
+            <div class="card-body">
+                <h1 class="card-title text-center fw-bold mb-4 welcome">Benvenuto da PizzaMike!</h1>
+                <hr class="my-4" />
 
-        <hr />
+                <p class="card-text">
+                    Ciao a tutti, sono Michelangelo Musco, e sono entusiasta di darvi il benvenuto nella mia pizzeria
+                    digitale.
+                </p>
+                <p class="card-text">
+                    Questo spazio è stato creato come parte di un percorso di apprendimento e crescita nel mondo dello
+                    sviluppo
+                    web, utilizzando le potenti tecnologie di **Java** e **Spring Boot**.
+                    <br>
+                    <br>
+                    Qui non troverete solo un
+                    elenco
+                    di pizze, ma
+                    il frutto di uno studio appassionato e di un progetto sviluppato con cura e attenzione.
+                </p>
 
-        <p class="text-center">
-            Benvenuto nella Pizzeria di Michelangelo!
-            Ciao a tutti, sono Michelangelo Musco, e sono entusiasta di darvi il benvenuto nella mia pizzeria digitale.
+                <h4 class="mt-5 mb-3">Ogni funzionalità è il risultato di concetti di programmazione fondamentali:</h4>
 
-            Questo spazio è stato creato come parte di un percorso di apprendimento e crescita nel mondo dello sviluppo
-            web, utilizzando le potenti tecnologie di Java e Spring Boot. Qui non troverete solo un elenco di pizze, ma
-            il frutto di uno studio appassionato e di un progetto sviluppato con cura e attenzione.
+                <ul>
+                    <li>La gestione del database con JPA e Hibernate.</li>
+                    <li>La creazione di un'interfaccia intuitiva e dinamica con Thymeleaf.</li>
+                    <li>Lo sviluppo di API e servizi per la gestione dei dati.</li>
+                </ul>
 
-            Ogni funzionalità che vedete è il risultato dell'applicazione di concetti di programmazione fondamentali:
+                <p class="card-text mt-5">
+                    Il mio obiettivo è che questa pizzeria non sia solo un menu online, ma una dimostrazione pratica di
+                    come
+                    il
+                    codice possa dare vita a un'applicazione robusta, efficiente e deliziosa. Spero che l'esplorazione
+                    di
+                    questo
+                    sito vi metta l'acquolina in bocca tanto quanto lo è stato costruirlo per me.
+                </p>
 
-            La gestione del database con JPA e Hibernate.
+                <hr class="my-4" />
 
-            La creazione di un'interfaccia intuitiva e dinamica con Thymeleaf.
+                <p class="card-text text-center fst-italic">
+                    Sentitevi liberi di esplorare il menu e di dare un'occhiata a quello che ho realizzato. Buon
+                    appetito!
+                </p>
 
-            Lo sviluppo di API e servizi per la gestione dei dati.
-
-            Il mio obiettivo è che questa pizzeria non sia solo un menu online, ma una dimostrazione pratica di come il
-            codice possa dare vita a un'applicazione robusta, efficiente e deliziosa. Spero che l'esplorazione di questo
-            sito vi metta l'acquolina in bocca tanto quanto lo è stato costruirlo per me.
-
-            Sentitevi liberi di esplorare il menu e di dare un'occhiata a quello che ho realizzato. Buon appetito!
-
-            Con i miei migliori saluti,
-            Michelangelo Musco
-            <hr />
-        </p>
-    </div>
+                <p class="text-end fw-bold">
+                    Con i miei migliori saluti,<br>Michelangelo Musco
+                </p>
+            </div>
+        </div>
+    </main>
     <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
 

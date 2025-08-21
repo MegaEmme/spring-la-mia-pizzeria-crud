@@ -9,7 +9,16 @@
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('pizzas')}"></nav>
     <main class="container p-4">
-        <h1 class="text-center">Le Pizze di Mike</h1>
+        <div class="d-flex justify-content-between">
+            <h1 class="text-center">Le Pizze di Mike</h1>
+            <form id="pizza-form" method="get" th:action="@{/pizzas}" th:object="${pizza}"
+                class="d-flex align-items-center justify-content-center">
+                <h2 class="me-3">Ricerca pizza: </h2>
+                <label for="search-term"></label>
+                <input type="text" id="search-term" name="searchTerm" class="me-3 rounded">
+                <button type="submit" class="btn btn-sm btn-success rounded">Cerca</button>
+            </form>
+        </div>
         <hr />
         <section class="row">
             <div class="col-12">
@@ -39,15 +48,6 @@
                 <p th:unless="${pizzas.size() > 0}" th:text="There are no pizzas available at the moment..." />
             </div>
         </section>
-        <hr />
-
-        <form id="pizza-form" method="get" th:action="@{/pizzas}" th:object="${pizza}"
-            class="d-flex align-items-center justify-content-center">
-            <h2 class="mb-3 me-3">Ricerca pizza: </h2>
-            <label for="search-term"></label>
-            <input type="text" id="search-term" name="searchTerm" class="me-3 rounded">
-            <button type="submit" class="btn btn-sm btn-success rounded">Cerca</button>
-        </form>
         <hr />
     </main>
     <div th:replace="~{fragments/resources :: scripts}"></div>

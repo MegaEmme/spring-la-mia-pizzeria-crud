@@ -9,12 +9,21 @@
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('pizza')}"></nav>
     <main class="container p-4" th:object="${pizza}">
-        <h1 class="mb-3">Singole pizze</h1>
-        <hr />
-        <h2 class="mb-3">Pizza: [[*{name}]]</h2>
-        <h2 class="mb-3">Descrizione: [[*{description}]]</h2>
-        <h3 class="mb-3"><a th:href="*{imageUrl}">Immagine</a></h3>
-        <h3 class="mb-3">Prezzo: [[*{price}]] €</h3>
+        <div class="card shadow-lg p-0">
+            <div class="row g-0">
+                <div class="col-md-5 p-2">
+                    <img th:src="*{imageUrl}" class="img-fluid rounded-start h-100 object-fit-cover" th:alt="*{name}">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h1 class="card-title">[[*{name}]]</h1>
+                        <p class="card-text text-muted">Ingredienti: [[*{description}]]</p>
+                        <hr />
+                        <h4 class="card-text text-end mt-4">Prezzo: [[*{price}]] €</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
