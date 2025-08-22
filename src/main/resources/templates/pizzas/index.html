@@ -8,16 +8,18 @@
 
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('pizzas')}"></nav>
+
     <main class="container p-4">
-        <div class="d-flex justify-content-between">
-            <h1 class="text-center">Le Pizze di Mike</h1>
+        <div class="d-flex justify-content-around  align-items-center ">
+            <h1>Le Pizze di Mike</h1>
             <form id="pizza-form" method="get" th:action="@{/pizzas}" th:object="${pizza}"
-                class="d-flex align-items-center justify-content-center">
+                class="d-flex justify-content-center align-items-center">
                 <h2 class="me-3">Ricerca pizza: </h2>
                 <label for="search-term"></label>
                 <input type="text" id="search-term" name="searchTerm" class="me-3 rounded">
-                <button type="submit" class="btn btn-sm btn-success rounded">Cerca</button>
+                <button type="submit" class="btn btn-success rounded btn-sm">Cerca</button>
             </form>
+            <a th:href="@{/pizzas/create}" class="btn btn-primary rounded btn-sm">Crea nuova pizza</a>
         </div>
         <hr />
         <section class="row">
@@ -25,21 +27,67 @@
                 <div class="p-4" th:if="${pizzas.size() > 0}">
                     <table class="table border border-dark">
                         <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Descrizione</th>
-                                <th>URL immagine</th>
-                                <th>Prezzo</th>
-                                <th>Dettaglio</th>
-                            </tr>
+                            <tr class="mb-5">
+                                <th class="p-4 text-center">Nome</th>
+                                <th class="p-4 text-center">Descrizione</th>
+                                <th class="p-4 text-center">URL immagine</th>
+                                <th class="p-4 text-center">Prezzo</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                         </thead>
                         <tbody>
                             <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-                                <td>[[*{name}]]</td>
-                                <td>[[*{description}]]</td>
-                                <td><a th:href="*{imageUrl}">[[*{imageUrl}]]</a></td>
-                                <td>[[*{price}]] €</td>
-                                <td><a th:href="@{/pizzas/{id}(id=*{id})}" class="btn btn-info btn-sm">Dettaglio</a>
+                                <td class="p-4">[[*{name}]]</td>
+                                <td class="p-4">[[*{description}]]</td>
+                                <td class="p-4"><a th:href="*{imageUrl}">[[*{imageUrl}]]</a></td>
+                                <td class="p-4 text-nowrap">[[*{price}]] €</td>
+                                <td class="p-4"><a th:href="@{/pizzas/{id}(id=*{id})}"
+                                        class="btn btn-info btn-sm">Dettaglio</a>
+                                </td>
+                                <td class="p-4">
+                                    <a th:href="@{/pizzas/edit/{id}(id = ${pizza.id})}"
+                                        class="btn btn-success btn-sm">Modifica</a>
+                                </td>
+                                <td class="p-4">
+                                    <!-- MODALE BOOTSTRAP PER BOTTONE DELETE  -->
+                                    <!-- 1) bottone delete che fa partire la modale  -->
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                        th:data-bs-target="'#delete-modal-' + ${pizza.id}">
+                                        Elimina
+                                    </button>
+                                    <!-- 2) modale che appare al click sul bottone delete  -->
+                                    <div class="modal fade" th:id="'delete-modal-' + ${pizza.id}" tabindex="-1"
+                                        aria-labelledby="delete-modal" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                        Rimuovendo "[[${pizza.name}]]"
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Sei sicuro di voler rimuovere la pizza
+                                                    <strong>"[[${pizza.name}]]"</strong>?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!-- bottone da cliccare per chiudere senza effetti  -->
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Chiudi</button>
+                                                    <!-- vero bottone della modale che fa partire la cancellazione con metodo delete  -->
+                                                    <form class="d-inline-block"
+                                                        th:action="@{/pizzas/delete/{id}(id = ${pizza.id})}"
+                                                        method="post">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            Elimina
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -50,6 +98,7 @@
         </section>
         <hr />
     </main>
+
     <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
 
