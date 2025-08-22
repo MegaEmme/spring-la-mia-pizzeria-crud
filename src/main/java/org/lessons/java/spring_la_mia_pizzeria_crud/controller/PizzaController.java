@@ -43,7 +43,7 @@ public class PizzaController {
         return "pizzas/show";
     }
 
-    // QUERY CUSTOM TROVAPIZZADALNOME
+    // QUERY CUSTOM TROVAPIZZADALNOME --> spostata direttamete nella index ^
     // @GetMapping("/searchByName")
     // public String searchByName(@RequestParam(name = "name") String name, Model
     // model) {
