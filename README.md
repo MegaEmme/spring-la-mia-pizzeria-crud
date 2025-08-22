@@ -32,3 +32,23 @@ Ogni pizza dell’elenco avrà quindi un pulsante che se cliccato ci porterà a 
 La view a quel punto li mostrerà all’utente con la grafica che preferiamo.
 ## Step 3 - *Bonus*
 Nella pagina con l’elenco delle pizze aggiungiamo un campo di testo che se compilato filtrerà le pizze (lato server) aventi come titolo quello inserito dall’utente.
+
+## Step 4
+Abbiamo la lista delle pizze, abbiamo i dettagli delle pizze...perchè non realizzare la pagina per la creazione di una nuova pizza?
+
+Aggiungiamo quindi tutto il codice necessario per mostrare il form per la creazione di una nuova pizza e per il salvataggio dei dati in tabella.
+
+Nella index creiamo ovviamente il bottone “Crea nuova pizza” che ci porta a questa nuova pagina creata.
+
+Ricordiamoci che l’utente potrebbe sbagliare inserendo dei dati: gestiamo quindi la validazione! Ad esempio verifichiamo che :
+- i dati della pizza siano tutti presenti
+- il campi di testo non superino una certa lunghezza 
+- il prezzo abbia un valore valido (ha senso una pizza con prezzo minore o uguale a zero?)
+## Step 5
+Completiamo le pagine di gestione delle nostre pizze!
+
+Abbiamo la pagina con la lista di tutte le pizze, quella con i dettagli della singola pizza, quella per crearla...cosa manca?
+
+Dobbiamo realizzare :
+- pagina di modifica di una pizza 
+- cancellazione di una pizza, cliccando un pulsante presente nella grafica di ogni singolo prodotto mostrato (nella lista in index)
